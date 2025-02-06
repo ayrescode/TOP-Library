@@ -1,7 +1,6 @@
 const myLibrary = [];
 const library = document.querySelector('.library');
 const send = document.querySelector('.btn');
-const input = document.querySelector('input');
 
 // the constructor...
 function Book(name, author, lenght, read) {
@@ -27,10 +26,10 @@ function bookshelf(array) {
   book.textContent = `Book: ${array.name}`;
   author.textContent = `By the author: ${array.author}`;
   pages.textContent = `With ${array.lenght} pages`;
-  if (array.read == true) {
+  if (array.read === 'true') {
     read.textContent = 'And i have read it!';
   } else {
-    read.textContent = 'And i have not read it!';
+    read.textContent = 'And i have NOT read it!';
   }
   library.appendChild(div);
   div.appendChild(book);
@@ -39,11 +38,27 @@ function bookshelf(array) {
   div.appendChild(read);
 }
 
-// button selector
+// button selector and event listener
 send.addEventListener('click', handleClick);
 // function to create and display new book.
 function handleClick() {
-  addBookToLibrary('Name of The Wind', 'Patrick Rothfuss', 394, true);
+  const name = document.querySelector('#bookName');
+  const author = document.querySelector('#author');
+  const pages = document.querySelector('#pages');
+  const select = document.querySelector('select');
+  console.log(select.value);
+  addBookToLibrary(
+    `${name.value}`,
+    `${author.value}`,
+    `${pages.value}`,
+    `${select.value}`
+  );
+  name.value = '';
+  author.value = '';
+  pages.value = '';
+  select.value = '';
+  console.log(myLibrary);
+
   let lastBook = myLibrary[myLibrary.length - 1];
   bookshelf(lastBook);
 }
