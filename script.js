@@ -1,4 +1,37 @@
 const myLibrary = [];
+const library = document.querySelector('.library');
+const send = document.querySelector('.btn');
+const input = document.querySelector('input');
+
+// console.log(
+//   input.forEach(function (element) {
+//     console.log('myass');
+//   })
+// );
+
+// for (let i = 0; i < input.lenght; i++) {
+//   const x = input[i];
+//   if (x.name) {
+//     console.log(`${x.name}: ${x.value}`);
+//   }
+// }
+
+// console.log(input);
+// console.log(send);
+send.addEventListener('click', handleClick);
+
+function handleClick() {
+  addBookToLibrary('Name of The Wind', 'Patrick Rothfuss', 394, true);
+  bookshelf(myLibrary);
+}
+
+// function handleClick() {
+//   console.log(input.value);
+//   let book = input.value;
+//   console.log(book);
+//   addBookToLibrary(`${book}`, 'my balls', 125, true);
+//   input.value = '';
+// }
 
 // the constructor...
 function Book(name, author, lenght, read) {
@@ -35,7 +68,7 @@ function bookshelf(array) {
     } else {
       read.textContent = 'And i have not read it!';
     }
-    document.body.appendChild(div);
+    library.appendChild(div);
     div.appendChild(book);
     div.appendChild(author);
     div.appendChild(pages);
