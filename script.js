@@ -46,7 +46,6 @@ function handleClick() {
   const author = document.querySelector('#author');
   const pages = document.querySelector('#pages');
   const select = document.querySelector('select');
-  console.log(select.value);
   addBookToLibrary(
     `${name.value}`,
     `${author.value}`,
@@ -56,8 +55,7 @@ function handleClick() {
   name.value = '';
   author.value = '';
   pages.value = '';
-  select.value = '';
-  console.log(myLibrary);
+  select.value = 'true';
 
   let lastBook = myLibrary[myLibrary.length - 1];
   bookshelf(lastBook);
