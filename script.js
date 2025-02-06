@@ -3,36 +3,6 @@ const library = document.querySelector('.library');
 const send = document.querySelector('.btn');
 const input = document.querySelector('input');
 
-// console.log(
-//   input.forEach(function (element) {
-//     console.log('myass');
-//   })
-// );
-
-// for (let i = 0; i < input.lenght; i++) {
-//   const x = input[i];
-//   if (x.name) {
-//     console.log(`${x.name}: ${x.value}`);
-//   }
-// }
-
-// console.log(input);
-// console.log(send);
-send.addEventListener('click', handleClick);
-
-function handleClick() {
-  addBookToLibrary('Name of The Wind', 'Patrick Rothfuss', 394, true);
-  bookshelf(myLibrary);
-}
-
-// function handleClick() {
-//   console.log(input.value);
-//   let book = input.value;
-//   console.log(book);
-//   addBookToLibrary(`${book}`, 'my balls', 125, true);
-//   input.value = '';
-// }
-
 // the constructor...
 function Book(name, author, lenght, read) {
   this.name = name;
@@ -47,33 +17,33 @@ function addBookToLibrary(name, author, lenght, read) {
   return myLibrary.push(newBook);
 }
 
-// manually created books
-addBookToLibrary('Name of The Wind', 'Patrick Rothfuss', 394, true);
-addBookToLibrary('Mistborn', 'Brandon Sanderson', 525, false);
-addBookToLibrary('Harry potter', 'J. K. Rowling', 292, false);
-
 // Displays books on the screen
 function bookshelf(array) {
-  array.forEach(function (element) {
-    const div = document.createElement('div');
-    const book = document.createElement('h1');
-    const author = document.createElement('p');
-    const pages = document.createElement('p');
-    const read = document.createElement('p');
-    book.textContent = `Book: ${element.name}`;
-    author.textContent = `By the author: ${element.author}`;
-    pages.textContent = `With ${element.lenght} pages`;
-    if (element.read == true) {
-      read.textContent = 'And i have read it!';
-    } else {
-      read.textContent = 'And i have not read it!';
-    }
-    library.appendChild(div);
-    div.appendChild(book);
-    div.appendChild(author);
-    div.appendChild(pages);
-    div.appendChild(read);
-  });
+  const div = document.createElement('div');
+  const book = document.createElement('h1');
+  const author = document.createElement('p');
+  const pages = document.createElement('p');
+  const read = document.createElement('p');
+  book.textContent = `Book: ${array.name}`;
+  author.textContent = `By the author: ${array.author}`;
+  pages.textContent = `With ${array.lenght} pages`;
+  if (array.read == true) {
+    read.textContent = 'And i have read it!';
+  } else {
+    read.textContent = 'And i have not read it!';
+  }
+  library.appendChild(div);
+  div.appendChild(book);
+  div.appendChild(author);
+  div.appendChild(pages);
+  div.appendChild(read);
 }
 
-bookshelf(myLibrary);
+// button selector
+send.addEventListener('click', handleClick);
+// function to create and display new book.
+function handleClick() {
+  addBookToLibrary('Name of The Wind', 'Patrick Rothfuss', 394, true);
+  let lastBook = myLibrary[myLibrary.length - 1];
+  bookshelf(lastBook);
+}
