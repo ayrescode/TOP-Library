@@ -62,16 +62,31 @@ library.addEventListener('click', (event) => {
     deleteBook(index);
   }
 });
-// function delete
+// delete function
 function deleteBook(index) {
   myLibrary.splice(index, 1);
   displayBooks();
 }
+
+// toggle read button
+library.addEventListener('click', (event) => {
+  if (event.target.classList.contains('true')) {
+    const index = event.target.parentElement.getAttribute('data-index');
+    myLibrary[index].read = 'false';
+  } else if (event.target.classList.contains('false')) {
+    const index = event.target.parentElement.getAttribute('data-index');
+    myLibrary[index].read = 'true';
+  }
+  displayBooks();
+});
+
 // manual books created
-const book1 = new book('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
-const book2 = new book('To Kill a Mockingbird', 'Harper Lee', 281, false);
-const book3 = new book('No Longer Human', 'Osamu Dazai', 304, true);
-const book4 = new book('Flowers for Algernon', 'Daniel Keyes', 272, true);
-const book5 = new book('The Shining', 'Stephen King', 447, false);
+const book1 = new book('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'false');
+const book2 = new book('To Kill a Mockingbird', 'Harper Lee', 281, 'false');
+const book3 = new book('No Longer Human', 'Osamu Dazai', 304, 'true');
+const book4 = new book('Flowers for Algernon', 'Daniel Keyes', 272, 'true');
+const book5 = new book('The Shining', 'Stephen King', 447, 'false');
 myLibrary.push(book1, book2, book3, book4, book5);
 displayBooks();
+
+console.log(myLibrary);
