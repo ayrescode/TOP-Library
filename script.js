@@ -3,16 +3,16 @@ const library = document.querySelector('.library');
 const send = document.querySelector('.btn');
 
 // the constructor...
-function book(name, author, lenght, read) {
+function book(name, author, pages, read) {
   this.name = name;
   this.author = author;
-  this.lenght = lenght;
+  this.pages = pages;
   this.read = read;
 }
 
 // take params, create a book then store it in the array
-function addBookToLibrary(name, author, lenght, read) {
-  let newBook = new book(name, author, lenght, read);
+function addBookToLibrary(name, author, pages, read) {
+  let newBook = new book(name, author, pages, read);
   return myLibrary.push(newBook);
 }
 
